@@ -1,0 +1,64 @@
+﻿@model MvcArea.Usuarios
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Usuarios</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.id_usuario)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.id_usuario)
+            @Html.ValidationMessageFor(model => model.id_usuario)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.nombre)
+            @Html.ValidationMessageFor(model => model.nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.usuario)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.usuario)
+            @Html.ValidationMessageFor(model => model.usuario)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.contraseña)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.contraseña)
+            @Html.ValidationMessageFor(model => model.contraseña)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.correo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.correo)
+            @Html.ValidationMessageFor(model => model.correo)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

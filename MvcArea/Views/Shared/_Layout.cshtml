@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@ViewBag.Title</title>
+<!-- bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Font AWESOME -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<!-- JQUERY -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="~/Content/tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script>
+
+<!-- funcion Scroll-->
+<script src="/Content/js/scroll.js"></script>
+<!-- hoja de estilo -->
+<link rel="stylesheet" href="/Content/Home/css/style.css" />
+<!-- funcion animacion -->
+<link rel="stylesheet" href="/Content/Home/css/animations.css" type="text/css">
+<!-- editor de html -->
+
+</head>
+<body>
+    <!-- menu -->
+    @Html.Partial("_partials/_menu")
+
+
+    <!-- Contenido layout -->
+    @RenderBody()
+     <!-- footer -->
+    @Html.Partial("_partials/_footer")
+
+</body>
+</html>
+<!-- Libreria JS para animar contenido -->
+    <script src="/Content/Home/js/css3-animate-it.js"></script>
+    <!-- Libreria JS bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $.doTimeout(2500, function () {
+                $(".repeat.go").removeClass("go");
+
+                return true;
+            });
+            $.doTimeout(2520, function () {
+                $(".repeat").addClass("go");
+                return true;
+            });
+
+        });
+
+    </script>

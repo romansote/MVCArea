@@ -1,0 +1,97 @@
+﻿@model MvcArea.Usuarios
+@Html.Partial("_Partials/_Menu")
+<div class="nav-side-menu"><!-- inicio menu -->
+    <div class="brand"><img src="/Content/Admincp/img/logo.png" width="250" height="70"></div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                     @Html.ActionLink("Escritorio", "Index", "Panel", new { area = "Admincp" }, null)
+                </li>
+                <li data-toggle="collapse" data-target="#service1" class="collapsed">
+                  <a href="#"><i class="fa fa-users fa-lg"></i> Artistas <span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="service1">
+                    <li> @Html.ActionLink("Agregar Artistas", "Create", "Artistas", new { area = "Admincp" }, null)</li>
+                  <li> @Html.ActionLink("Administrar Artistas", "index", "Artistas", new { area = "Admincp" }, null)</li>
+                </ul>
+
+                 <li data-toggle="collapse" data-target="#service2" class="collapsed">
+                  <a href="#"><i class="fa fa-users fa-lg"></i> Obras <span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="service2">
+                     <li> @Html.ActionLink("Agregar Obras", "Create", "Obras", new { area = "Admincp" }, null)</li>
+                     <li> @Html.ActionLink("Administrar Obras", "index", "Obras", new { area = "Admincp" }, null)</li>
+                </ul>
+
+                 <li data-toggle="collapse" data-target="#service3" class="collapsed">
+                  <a href="#"><i class="fa fa-users fa-lg"></i> Ubicaciones <span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="service3">
+                   <li> @Html.ActionLink("Agregar Ubicacion", "Create", "Ubicacion", new { area = "Admincp" }, null)</li>
+                   <li> @Html.ActionLink("Administrar Ubicacion", "index", "Ubicacion", new { area = "Admincp" }, null)</li>
+                    <li> @Html.ActionLink("Listar Obras del ultimo año", "listarObras", "Obras", new { area = "Admincp" }, null)</li>
+                </ul>
+
+                 <li data-toggle="collapse" data-target="#service" class="collapsed active">
+                  <a href="#"><i class="fa fa-users fa-lg"></i> Usuarios <span class="arrow"></span></a>
+                </li> 
+                
+                 
+                <ul class="sub-menu collapse" id="service">
+                   <li class="active"> @Html.ActionLink("Agregar Usuarios", "Create", "Usuarios", new { area = "Admincp" }, null)</li>
+                   <li> @Html.ActionLink("Administrar Usuarios", "index", "Usuarios", new { area = "Admincp" }, null)</li>
+                   <li> @Html.ActionLink("Ver Registros de acceso", "VerRegistrosLogin", "Panel", new { area = "Admincp" }, null)</li>
+                </ul>
+            </ul>
+     </div>
+</div>
+</div><!-- Fin menu -->
+<div class="col-md-8">
+	<div align="center"id="contenido">
+            @using (Html.BeginForm()) {
+                 @Html.ValidationSummary(true)
+                <br />
+                <br />
+                <h4 align="center"><i class="fa fa-align-justify" aria-hidden="true"></i> Crear Nuevo Usuario</h4>
+                <br />
+                <p class="bg-primary"> @Html.ValidationSummary()</p>
+               
+             <table align="center" class="table">
+                 <tr align="center">
+                     <td></td>
+                     <td>@Html.LabelFor(model => model.nombre)</td>
+                     <td>@Html.EditorFor(model => model.nombre)</td>
+                 </tr>
+                <tr align="center">
+                      <td></td>
+                      <td> @Html.LabelFor(model => model.usuario)</td>
+                      <td> @Html.EditorFor(model => model.usuario)</td>
+                 </tr>
+                 <tr align="center">
+                      <td></td>
+                      <td> @Html.LabelFor(model => model.contraseña)</td>
+                      <td>@Html.EditorFor(model => model.contraseña)</td>
+                 </tr>
+                 <tr align="center">
+                      <td></td>
+                      <td> @Html.LabelFor(model => model.correo)</td>
+                      <td>@Html.EditorFor(model => model.correo)</td>
+                 </tr>
+                      
+             </table>
+                <input class="btn btn-success" type="submit" value="Crear usuario" />
+            }
+
+
+
+    
+
+	</table>
+		</div>
+	</div>
+</div>
+
+@Html.Partial("_Partials/_Footer")

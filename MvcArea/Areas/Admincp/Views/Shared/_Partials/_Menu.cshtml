@@ -1,0 +1,11 @@
+﻿<div id="pagina">
+	<div id="header">
+		<div class="row">
+		  <div class="col-md-10"></div>
+		  <div class="col-md-2"> Hola,  @(Request.IsAuthenticated ? HttpContext.Current.User.Identity.Name : "Guest") <i class="fa fa-user fa-lg"></i><span>@Html.ActionLink("Salir","logout","Panel",new { area = "Admincp" }, null)</span></div>
+		</div>
+	</div>
+<div id="menu">
+<div class="row">
+<div class="col-md-4">
+

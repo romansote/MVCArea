@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="webdivModel1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="webdivModel1StoreContainer">
+    <EntitySet Name="Artistas" EntityType="webdivModel1.Store.Artistas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Obras" EntityType="webdivModel1.Store.Obras" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Registros_login" EntityType="webdivModel1.Store.Registros_login" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="webdivModel1.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Ubicacion" EntityType="webdivModel1.Store.Ubicacion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="webdivModel1.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Obras_Artistas" Association="webdivModel1.Store.FK_Obras_Artistas">
+      <End Role="Artistas" EntitySet="Artistas" />
+      <End Role="Obras" EntitySet="Obras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Obras_Recepcion" Association="webdivModel1.Store.FK_Obras_Recepcion">
+      <End Role="Ubicacion" EntitySet="Ubicacion" />
+      <End Role="Obras" EntitySet="Obras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Registros_login_Usuarios" Association="webdivModel1.Store.FK_Registros_login_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Registros_login" EntitySet="Registros_login" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Artistas">
+    <Key>
+      <PropertyRef Name="id_Artista" />
+    </Key>
+    <Property Name="id_Artista" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="rut" Type="varchar" MaxLength="50" />
+    <Property Name="nacionalidad" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Obras">
+    <Key>
+      <PropertyRef Name="CodigoObra" />
+    </Key>
+    <Property Name="CodigoObra" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id_Artista" Type="int" />
+    <Property Name="Estilo" Type="varchar" MaxLength="50" />
+    <Property Name="Dimensiones" Type="varchar" MaxLength="50" />
+    <Property Name="Fecha_Creacion" Type="varchar" MaxLength="50" />
+    <Property Name="Procedencia" Type="varchar" MaxLength="50" />
+    <Property Name="Valor" Type="int" />
+    <Property Name="CuidadosEspeciales" Type="varchar" MaxLength="50" />
+    <Property Name="id_Recepcion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Registros_login">
+    <Key>
+      <PropertyRef Name="id_registro" />
+    </Key>
+    <Property Name="id_registro" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id_usuario" Type="int" Nullable="false" />
+    <Property Name="fecha" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Ubicacion">
+    <Key>
+      <PropertyRef Name="id_Recepcion" />
+    </Key>
+    <Property Name="id_Recepcion" Type="int" Nullable="false" />
+    <Property Name="Ubicacion" Type="varchar" MaxLength="50" />
+    <Property Name="NombreSalon" Type="varchar" MaxLength="50" />
+    <Property Name="Iluminacion" Type="varchar" MaxLength="50" />
+    <Property Name="ObrasMaximas" Type="int" />
+    <Property Name="Tamaño" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+    <Property Name="usuario" Type="varchar" MaxLength="50" />
+    <Property Name="contraseña" Type="varchar" MaxLength="50" />
+    <Property Name="correo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Obras_Artistas">
+    <End Role="Artistas" Type="webdivModel1.Store.Artistas" Multiplicity="0..1" />
+    <End Role="Obras" Type="webdivModel1.Store.Obras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artistas">
+        <PropertyRef Name="id_Artista" />
+      </Principal>
+      <Dependent Role="Obras">
+        <PropertyRef Name="id_Artista" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Obras_Recepcion">
+    <End Role="Ubicacion" Type="webdivModel1.Store.Ubicacion" Multiplicity="1" />
+    <End Role="Obras" Type="webdivModel1.Store.Obras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ubicacion">
+        <PropertyRef Name="id_Recepcion" />
+      </Principal>
+      <Dependent Role="Obras">
+        <PropertyRef Name="id_Recepcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Registros_login_Usuarios">
+    <End Role="Usuarios" Type="webdivModel1.Store.Usuarios" Multiplicity="1" />
+    <End Role="Registros_login" Type="webdivModel1.Store.Registros_login" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="Registros_login">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PR_ELIMINAR_REGISTROLOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="PR_LISTAR_REGISTROSLOGIN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="PR_LISTAR_USUARIOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>

@@ -1,0 +1,73 @@
+﻿@model MvcArea.Areas.Admincp.Models.LoginModel
+
+@{
+    ViewBag.Title = "login";
+}
+
+@using (Html.BeginForm()) { 
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    <!-- validationSummary muestra los errores validados en la capa model -->
+     
+     <div id="Contenido">
+     <div align="center" id="login-formulario"> <!-- Inicio login -->
+        	<div class="contenido">
+            <fieldset>
+            <h3 align="center"><i class="fa fa-shield" aria-hidden="true"></i> ACCEDER</h3>
+                 @Html.ValidationMessageFor(model => model.usuario)
+                  @Html.ValidationMessageFor(model => model.contraseña)
+            	<div class="input-group input-group-lg">
+                  <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                  @Html.TextBoxFor(model => model.usuario,  new { @placeholder = "Usuario"})
+             
+                </div>
+                <div class="input-group input-group-lg">
+                  <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+                 @Html.PasswordFor(model => model.contraseña,  new { @placeholder = "Contraseña"})
+                </div>
+                <div class="row">
+                	<div class="col-md-6">
+                    	<label>Recordarme  @Html.EditorFor(model => model.recordar) </label>
+                    </div>
+                    
+                    
+                 </div>   
+                <div class="row">
+                	<div class="col-md-12">
+                    	<input  class="boton-form" type="submit" value="acceder">
+                    </div>
+                 </div>   
+                </fieldset>    
+            </div>
+        </div> <!-- fin login -->
+    </div>
+ /**<fieldset>
+          <legend>login</legend>
+          
+          <div class="editor-label">
+              @Html.LabelFor(model => model.usuario)
+          </div>
+
+          <div class="editor-field">
+              @Html.EditorFor(model => model.usuario)
+             
+          </div>
+          
+          <div class="editor-label">
+              @Html.LabelFor(model => model.contraseña)
+          </div>
+          <div class="editor-field">
+                @Html.EditorFor(model => model.contraseña)
+               
+          </div>
+
+          <div class="editor-label">
+                @Html.LabelFor(model => model.recordar)
+          </div>
+          <div class="editor-field">
+              @Html.EditorFor(model => model.recordar)
+             
+          </div>
+          <p><input type="submit" value="Acceder"/></p>
+    </fieldset> **/
+}

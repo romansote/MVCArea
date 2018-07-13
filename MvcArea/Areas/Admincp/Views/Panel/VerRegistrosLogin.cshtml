@@ -1,0 +1,81 @@
+﻿@model IEnumerable<MvcArea.PR_LISTAR_REGISTROSLOGIN_Result>
+@Html.Partial("_Partials/_Menu")
+<div class="nav-side-menu"><!-- inicio menu -->
+    <div class="brand"><img src="/Content/Admincp/img/logo.png" width="250" height="70"></div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  
+        <div class="menu-list">
+  
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                     @Html.ActionLink("Escritorio", "Index", "Panel", new { area = "Admincp" }, null)
+                </li>
+                <li data-toggle="collapse" data-target="#service1" class="collapsed">
+                  <a href="#"><i class="fa fa-users fa-lg"></i> Artistas <span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="service1">
+                    <li> @Html.ActionLink("Agregar Artistas", "Create", "Artistas", new { area = "Admincp" }, null)</li>
+                  <li> @Html.ActionLink("Administrar Artistas", "index", "Artistas", new { area = "Admincp" }, null)</li>
+                </ul>
+
+                 <li data-toggle="collapse" data-target="#service2" class="collapsed">
+                  <a href="#"><i class="fa fa-users fa-lg"></i> Obras <span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="service2">
+                     <li> @Html.ActionLink("Agregar Obras", "Create", "Obras", new { area = "Admincp" }, null)</li>
+                     <li> @Html.ActionLink("Administrar Obras", "index", "Obras", new { area = "Admincp" }, null)</li>
+                </ul>
+
+                 <li data-toggle="collapse" data-target="#service3" class="collapsed">
+                  <a href="#"><i class="fa fa-users fa-lg"></i> Ubicaciones <span class="arrow"></span></a>
+                </li>  
+                <ul class="sub-menu collapse" id="service3">
+                   <li> @Html.ActionLink("Agregar Ubicacion", "Create", "Ubicacion", new { area = "Admincp" }, null)</li>
+                   <li> @Html.ActionLink("Administrar Ubicacion", "index", "Ubicacion", new { area = "Admincp" }, null)</li>
+                </ul>
+
+                 <li data-toggle="collapse" data-target="#service" class="collapsed active">
+                  <a href="#"><i class="fa fa-users fa-lg"></i> Usuarios <span class="arrow"></span></a>
+                </li> 
+                <ul class="sub-menu collapse" id="service">
+                   <li> @Html.ActionLink("Agregar Usuarios", "Create", "Usuarios", new { area = "Admincp" }, null)</li>
+                   <li> @Html.ActionLink("Administrar Usuarios", "index", "Usuarios", new { area = "Admincp" }, null)</li>
+                   <li class="active"> @Html.ActionLink("Ver Registros de acceso", "VerRegistrosLogin", "Panel", new { area = "Admincp" }, null)</li>
+                </ul>
+            </ul>
+     </div>
+</div>
+</div><!-- Fin menu -->
+<div class="col-md-8">
+	<div id="contenido">
+        <div class="ver_registros_login">
+            <h4 align="center"><i class="fa fa-align-justify" aria-hidden="true"></i> Registro de usuarios conectados</h4>
+            <br />
+            <table class="table">
+                <tr class="success">
+                    <th>
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.fecha)
+                    </th>
+                    <th></th>
+                </tr>
+
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fecha)
+                    </td>
+      
+                </tr>
+            }
+
+            </table>
+         </div>
+</div>
+
+@Html.Partial("_Partials/_Footer")

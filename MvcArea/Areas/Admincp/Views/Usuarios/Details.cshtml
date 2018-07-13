@@ -1,0 +1,50 @@
+﻿@model MvcArea.Usuarios
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Usuarios</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.id_usuario)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.id_usuario)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.nombre)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.usuario)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.usuario)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.contraseña)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.contraseña)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.correo)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.correo)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

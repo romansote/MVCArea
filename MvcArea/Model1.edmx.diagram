@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="09c22bf369d942f0afeb2ed3ddc4e151" Name="Diagrama1">
+        <EntityTypeShape EntityType="webdivModel.Artistas" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="webdivModel.Obras" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="webdivModel.Registros_login" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="webdivModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="webdivModel.Ubicacion" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="webdivModel.Usuarios" Width="1.5" PointX="5.75" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="webdivModel.FK_Obras_Artistas" ManuallyRouted="false" />
+        <AssociationConnector Association="webdivModel.FK_Obras_Recepcion" ManuallyRouted="false" />
+        <AssociationConnector Association="webdivModel.FK_Registros_login_Usuarios" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
